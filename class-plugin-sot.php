@@ -153,7 +153,7 @@ class StraylightOreTracker {
 
 			$screen = get_current_screen();
 			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_style( 'plugin-name-admin-styles', plugins_url( 'css/admin.css', __FILE__ ), PLUGIN_NAME_VERSION );
+				wp_enqueue_style( 'sot-admin-styles', plugins_url( 'dist/css/admin.css', __FILE__ ), PLUGIN_NAME_VERSION );
 			}
 
 		}
@@ -181,7 +181,7 @@ class StraylightOreTracker {
 
 			$screen = get_current_screen();
 			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_script( 'plugin-name-admin-script', plugins_url('js/admin.js', __FILE__), array( 'jquery' ), PLUGIN_NAME_VERSION );
+				wp_enqueue_script( 'sot-admin-script', plugins_url('dist/js/admin.min.js', __FILE__), array( 'jquery' ), PLUGIN_NAME_VERSION );
 			}
 
 		}
@@ -194,7 +194,7 @@ class StraylightOreTracker {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_styles() {
-		wp_enqueue_style( 'plugin-name-plugin-styles', plugins_url( 'css/display.css', __FILE__ ), PLUGIN_NAME_VERSION );
+		wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), PLUGIN_NAME_VERSION );
 	}
 
 	/**
@@ -203,7 +203,7 @@ class StraylightOreTracker {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_scripts() {
-		wp_enqueue_script( 'plugin-name-plugin-script', plugins_url( 'js/display.js', __FILE__ ), array( 'jquery' ), PLUGIN_NAME_VERSION );
+		wp_enqueue_script( 'sot-plugin-script', plugins_url( 'dist/js/all.min.js', __FILE__ ), array( 'jquery' ), PLUGIN_NAME_VERSION );
 	}
 
 	/**

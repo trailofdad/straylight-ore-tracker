@@ -8,6 +8,6 @@ const paths = {
 
 gulp.task('watch', () => {
   livereload.listen();
-  gulp.watch(paths.scripts, ['clean', 'scripts-common', 'scripts', 'lint']);
+  gulp.watch(paths.scripts, ['clean', 'scripts-common', 'admin', 'lint']);
   gulp.watch(paths.styles, ['clean', 'styles']);
 });

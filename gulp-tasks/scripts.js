@@ -9,6 +9,7 @@ gulp.task('scripts-common', ['clean'], () =>
   gulp.src([
     'src/js/vendor/*.js',
     'src/js/*.js',
+    '!src/js/admin.js',
   ])
   .pipe(sourcemaps.init())
   .pipe(babel({
@@ -18,6 +19,22 @@ gulp.task('scripts-common', ['clean'], () =>
   }))
   .pipe(uglify())
   .pipe(concat('all.min.js'))
+  .pipe(sourcemaps.write('maps'))
+  .pipe(gulp.dest('dist/js'))
+  .pipe(livereload()),
+);
+
+gulp.task('admin', ['clean'], () =>
+  gulp.src([
+    'src/js/admin.js',
+  ])
+  .pipe(sourcemaps.init())
+  .pipe(babel({
+    compact: false,
+    presets: ['es2015'],
+  }))
+  .pipe(uglify())
+  .pipe(concat('admin.min.js'))
   .pipe(sourcemaps.write('maps'))
   .pipe(gulp.dest('dist/js'))
   .pipe(livereload()),
