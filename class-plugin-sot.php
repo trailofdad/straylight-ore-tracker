@@ -151,10 +151,10 @@ class StraylightOreTracker {
 			 * Don't enqueue stylesheet or JavaScript if it's not
 			 */
 
-			$screen = get_current_screen();
-			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_style( 'sot-admin-styles', plugins_url( 'dist/css/admin.css', __FILE__ ), PLUGIN_NAME_VERSION );
-			}
+			// $screen = get_current_screen();
+			// if ( $screen->id == $this->plugin_screen_slug ) {
+			// 	wp_enqueue_style( 'sot-admin-styles', plugins_url( 'dist/css/admin.css', __FILE__ ), PLUGIN_NAME_VERSION );
+			// }
 
 		}
 

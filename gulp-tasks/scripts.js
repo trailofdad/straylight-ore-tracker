@@ -24,7 +24,7 @@ gulp.task('scripts-common', ['clean'], () =>
   .pipe(livereload()),
 );
 
-gulp.task('admin', ['clean'], () =>
+gulp.task('admin-scripts', ['clean'], () =>
   gulp.src([
     'src/js/admin.js',
   ])
