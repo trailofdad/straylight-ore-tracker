@@ -35,6 +35,9 @@ class StraylightOreTracker {
 	*/
 	protected $plugin_screen_slug = null;
 
+	// note that if you changet this you must also update the activate function...
+	protected $BASE_URL = 'ore-tracker';
+
 	/**
 	* Creates or returns an instance of this class.
 	*
@@ -94,9 +97,42 @@ class StraylightOreTracker {
 		 * For more information:
 		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		add_action( 'TODO', array( $this, 'action_method_name' ) );
-		add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 
+		add_action( 'init', array( $this, 'register_sot_post_types' ) );
+		add_action( 'admin_init', array($this, 'redirect_non_admin_users') );
+
+		add_action( 'init', array( $this, 'add_sot_rewrites') );
+		add_action( 'wp_head', array( $this, 'add_sot_base_url' ) );
+		add_action( 'template_include', array( $this, 'ore_tracker_template' ) );
+		add_filter( 'body_class', array( $this, 'add_sot_body_class' ) );
+
+		add_action( 'rest_api_init', array( $this, 'initialize_rest_routes') );
+		// add_action( 'TODO', array( $this, 'action_method_name' ) );
+		// add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+
+	}
+
+	/**
+	* Redirect non-admin users to home page
+	*
+	* This function is attached to the 'admin_init' action hook.
+	*/
+	public function redirect_non_admin_users() {
+		if ( ! current_user_can( 'manage_options' ) && '/wp-admin/admin-ajax.php' != $_SERVER['PHP_SELF'] ) {
+			wp_redirect( home_url() );
+			exit;
+		}
+	}
+
+		// include functions
+	public function register_sot_post_types() {
+		include 'functions/custom-post-types.php';
+		include 'functions/register-rest-routes.php';
+	}
+
+	public function initialize_rest_routes() {
+		$member_controller = new SOT_ROUTE();
+		$member_controller->register_routes();
 	}
 
 	/**
@@ -115,7 +151,7 @@ class StraylightOreTracker {
 
 		// Create Ore Tracker holding page
 		$url = 'ore-tracker';
-		if ( is_null(get_page_by_path($url)) ) {
+		if ( is_null( get_page_by_path($url) ) ) {
 			$id = wp_insert_post(array(
 				'post_type' => 'page',
 				'post_status' => 'publish',
@@ -134,7 +170,6 @@ class StraylightOreTracker {
 	 * @since    1.0.0
 	 */
 	 public static function deactivate( $network_wide ) {
-		// TODO: Define deactivation functionality here
 		remove_role( 'member' );
 	}
 
@@ -143,8 +178,7 @@ class StraylightOreTracker {
 	 */
 	public function load_plugin_textdomain() {
 
-		// TODO: replace "plugin-name-locale" with a unique value for your plugin
-		$domain = 'plugin-name-locale';
+		$domain = 'straylight-ore-tracker-locale';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
@@ -283,6 +317,44 @@ class StraylightOreTracker {
 	 */
 	public function filter_method_name() {
 		// TODO: Define your filter method here
+	}
+
+		public function add_sot_base_url() {
+		$id = get_option('ore_tracker_id');
+		if ( is_page( $id ) ) {
+			echo "<base href=\"/" . $this->BASE_URL . "/\" />";
+		}
+	}
+
+	public function add_sot_body_class($classes) {
+		$id = get_option('ore_tracker_id');
+		if ( is_page( $id ) ) {
+			return array('page', 'ore-tracker');
+		}
+
+		return $classes;
+	}
+
+	public function ore_tracker_template( $template ) {
+		$id = get_option('ore_tracker_id');
+		if ( is_page( $id ) ) {
+				//Check plugin directory next
+				$p_template = plugin_dir_path( __FILE__ ) . 'templates/ore-tracker.php';
+
+				if ( file_exists( $p_template ) ) {
+					return $p_template;
+				}
+		}
+
+		// fall back to original template
+		return $template;
+	}
+
+	public function add_sot_rewrites() {
+		$id = get_option('ore_tracker_id');
+		$url = $this->BASE_URL;
+
+		add_rewrite_rule("^${url}.*$", "index.php?page_id=${id}", 'top');
 	}
 
 }
