@@ -141,7 +141,7 @@ class StraylightOreTracker {
 	 public static function activate( $network_wide ) {
 		// Adds member role
 		$role = "member";
-    $display_name = "Member";
+    $display_name = "Corperation Member";
     $capabilities = array(
       'read' => true
     );
