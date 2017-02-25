@@ -6,17 +6,18 @@ class SOT_ROUTE extends WP_REST_Controller {
   // Endpoints
   public function register_routes() {
     $namespace = 'sot/v1';
-    $base = 'members';
+    $base = 'logs';
 
     // middlewares
     // array($this, 'validate_nonce'), // validate the nonce
     // array($this, 'can_edit')
 
     // Get All Ore Submissions
-    register_rest_route( $namespace, '/' . $base . '/submissions',
+    register_rest_route( $namespace, '/' . $base,
       array(
         'methods' => WP_REST_Server::READABLE,
-        'callback' => array( $this, 'get_all_submissions')
+        'callback' => array( $this, 'get_all_logs'),
+        'permission_callback' => array( $this, 'is_admin' )
       )
     );
 
@@ -24,7 +25,7 @@ class SOT_ROUTE extends WP_REST_Controller {
     register_rest_route( $namespace, '/' . $base . '/(?P<id>\d+)',
       array(
         'methods' => WP_REST_Server::READABLE,
-        'callback' => array( $this, 'get_single_submission'),
+        'callback' => array( $this, 'get_single_log'),
         'permission_callback' => array( $this, 'is_admin' )
       )
     );

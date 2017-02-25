@@ -20,15 +20,20 @@
     $args = array(
       'labels'             => $labels,
       'description'        => 'Holds information on a members ore mined during an op',
-      'public'             => false,
+      'exclude_from_search'=> true,
+      'publicly_queryable' => false,
+      'show_in_nav_menus'  => true,
+      'show_ui'            => true, 
       'query_var'          => true,
       'rewrite'            => array( 'slug' => 'ore-log' ),
       'capability_type'    => 'post',
       'hierarchical'       => false,
       'supports'           => array( 'title', 'thumbnail' ),
       'taxonomies'		 		 =>	array('Log Type'),
-      'delete_with_user'   => true,
-      'show_in_rest'       => true
+      'delete_with_user'   => false,
+      'show_in_rest'       => true,
+      'menu_icon'          => 'dashicons-book-alt',
+      'menu_position'      => 2
     );
 
     register_post_type( 'ore_log', $args );
