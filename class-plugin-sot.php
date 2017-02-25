@@ -135,6 +135,7 @@ class StraylightOreTracker {
 	 */
 	 public static function deactivate( $network_wide ) {
 		// TODO: Define deactivation functionality here
+		remove_role( 'member' );
 	}
 
 	/**
