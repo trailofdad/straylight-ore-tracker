@@ -107,8 +107,6 @@ class StraylightOreTracker {
 		add_filter( 'body_class', array( $this, 'add_sot_body_class' ) );
 
 		add_action( 'rest_api_init', array( $this, 'initialize_rest_routes') );
-		// add_action( 'TODO', array( $this, 'action_method_name' ) );
-		// add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 
 	}
 
