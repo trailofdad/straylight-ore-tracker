@@ -105,7 +105,26 @@ class StraylightOreTracker {
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
 	 */
 	 public static function activate( $network_wide ) {
-		// TODO: Define activation functionality here
+		// Adds member role
+		$role = "member";
+    $display_name = "Member";
+    $capabilities = array(
+      'read' => true
+    );
+    add_role( $role, $display_name, $capabilities );
+
+		// Create Ore Tracker holding page
+		$url = 'ore-tracker';
+		if ( is_null(get_page_by_path($url)) ) {
+			$id = wp_insert_post(array(
+				'post_type' => 'page',
+				'post_status' => 'publish',
+				'post_title' => 'Straylight Ore Tracker',
+				'post_name' => $url
+			));
+
+			update_option('ore_tracker_id', $id);
+		}
 	}
 
 	/**
