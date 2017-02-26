@@ -69,6 +69,7 @@
             ?>
           </select>
           <input type="text">
+          <span class="glyphicon glyphicon-remove ore-log__close"></span>
         </div>
       </div>
 
