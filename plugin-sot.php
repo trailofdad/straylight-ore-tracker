@@ -1,12 +1,7 @@
 <?php
 /**
- * The WordPress Plugin Boilerplate.
- *
- * A foundation off of which to build well-documented WordPress plugins that also follow
- * WordPress coding standards and PHP best practices.
- *
- * @package PluginName
- * @author  Your Name <email@example.com>
+ * @package StraylightOreTracker
+ * @author  Christian Hapgood <christian.hapgood@gmail.com>
  * @license GPL-2.0+
  * @link    TODO
  *
@@ -29,14 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
- * The following constant is used to define a constant for this plugin to make it
- * easier to provide cache-busting functionality on loading stylesheets
- * and JavaScript.
- *
- * After you've defined these constants, do a find/replace on the constants
- * used throughout the rest of this file.
- */
 if ( ! defined( 'STRAYLIGHT_ORE_TRACKER_VERSION' ) ) {
 
 	define( 'STRAYLIGHT_ORE_TRACKER_VERSION', '0.0.1' );

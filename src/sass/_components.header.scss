@@ -1,0 +1,18 @@
+body.ore-tracker {
+  .site-content {
+    padding-top: 0;
+    @include media('>=tablet') {
+      padding-top: 1.8rem;
+    }
+  }
+  .site-header {
+    .custom-header {
+      display: none;
+    }
+  }
+  .jumbotron {
+    background-image: url('../../assets/mining.jpg');
+    background-size: cover;
+    color: white;
+  }
+}

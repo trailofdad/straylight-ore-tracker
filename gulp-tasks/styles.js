@@ -6,15 +6,12 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import livereload from 'gulp-livereload';
-import normalize from 'node-normalize-scss';
 
 gulp.task('styles', ['clean'], () =>
 
   gulp.src('src/sass/main.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: ['node_modules/susy/sass', normalize.includePaths],
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(combineMq({
       beautify: false,
     }))

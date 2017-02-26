@@ -17,7 +17,7 @@ class SOT_ROUTE extends WP_REST_Controller {
       array(
         'methods' => WP_REST_Server::READABLE,
         'callback' => array( $this, 'get_all_logs'),
-        'permission_callback' => array( $this, 'is_admin' )
+        // 'permission_callback' => array( $this, 'is_admin' )
       )
     );
 
@@ -26,7 +26,7 @@ class SOT_ROUTE extends WP_REST_Controller {
       array(
         'methods' => WP_REST_Server::READABLE,
         'callback' => array( $this, 'get_single_log'),
-        'permission_callback' => array( $this, 'is_admin' )
+        // 'permission_callback' => array( $this, 'is_admin' )
       )
     );
   }
@@ -71,9 +71,9 @@ class SOT_ROUTE extends WP_REST_Controller {
   }
   // Auth
 
-  public function get_all_submissions() {
+  public function get_all_logs() {
     $args = array (
-      'post_type' => array( 'sot_submissions' ),
+      'post_type' => array( 'ore_log' ),
       'posts_per_page' => -1,
       'order' => 'ASC',
       'orderby' => 'title',

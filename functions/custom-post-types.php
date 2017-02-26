@@ -28,7 +28,7 @@
       'rewrite'            => array( 'slug' => 'ore-log' ),
       'capability_type'    => 'post',
       'hierarchical'       => false,
-      'supports'           => array( 'title', 'thumbnail' ),
+      'supports'           => array( 'title' ),
       'taxonomies'		 		 =>	array('Log Type'),
       'delete_with_user'   => false,
       'show_in_rest'       => true,

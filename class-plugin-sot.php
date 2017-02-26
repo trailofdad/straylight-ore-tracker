@@ -5,13 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * The WordPress Plugin Boilerplate.
- *
- * A foundation off of which to build well-documented WordPress plugins that also follow
- * WordPress coding standards and PHP best practices.
- *
- * Use PHPDoc tags if you wish to be able to document the code using a documentation
- * generator.
  *
  * @package StraylightOreTracker
  * @author  Christian Hapgood <christian.hapgood@gmail.com>
@@ -82,9 +75,10 @@ class StraylightOreTracker {
 		 */
 
 		// Register site stylesheets and JavaScript
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_bootstrap' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_scripts' ) );
-
+		
 		/*
 		 * TODO:
 		 *
@@ -205,7 +199,7 @@ class StraylightOreTracker {
 
 			// $screen = get_current_screen();
 			// if ( $screen->id == $this->plugin_screen_slug ) {
-			// 	wp_enqueue_style( 'sot-admin-styles', plugins_url( 'dist/css/admin.css', __FILE__ ), PLUGIN_NAME_VERSION );
+			// 	wp_enqueue_style( 'sot-admin-styles', plugins_url( 'dist/css/admin.css', __FILE__ ), STRAYLIGHT_ORE_TRACKER_VERSION );
 			// }
 
 		}
@@ -233,7 +227,7 @@ class StraylightOreTracker {
 
 			$screen = get_current_screen();
 			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_script( 'sot-admin-script', plugins_url('dist/js/admin.min.js', __FILE__), array( 'jquery' ), PLUGIN_NAME_VERSION );
+				wp_enqueue_script( 'sot-admin-script', plugins_url('dist/js/admin.min.js', __FILE__), array( 'jquery' ), STRAYLIGHT_ORE_TRACKER_VERSION );
 			}
 
 		}
@@ -246,7 +240,11 @@ class StraylightOreTracker {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_styles() {
-		wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), PLUGIN_NAME_VERSION );
+		wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), STRAYLIGHT_ORE_TRACKER_VERSION );
+	}
+
+	function enqueue_bootstrap() {
+		wp_enqueue_style( 'bootstrap',  plugin_dir_url( __FILE__ ) . 'src/sass/vendor/bootstrap/css/bootstrap.min.css', STRAYLIGHT_ORE_TRACKER_VERSION );
 	}
 
 	/**
@@ -255,7 +253,7 @@ class StraylightOreTracker {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_scripts() {
-		wp_enqueue_script( 'sot-plugin-script', plugins_url( 'dist/js/all.min.js', __FILE__ ), array( 'jquery' ), PLUGIN_NAME_VERSION );
+		wp_enqueue_script( 'sot-plugin-script', plugins_url( 'dist/js/all.min.js', __FILE__ ), array( 'jquery' ), STRAYLIGHT_ORE_TRACKER_VERSION );
 	}
 
 	/**

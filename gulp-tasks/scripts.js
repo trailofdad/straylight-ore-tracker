@@ -7,7 +7,8 @@ import livereload from 'gulp-livereload';
 
 gulp.task('scripts-common', ['clean'], () =>
   gulp.src([
-    'src/js/vendor/*.js',
+    'src/js/vendor/jquery-3.1.1.min.js',
+    'src/js/vendor/bootstrap.min.js',
     'src/js/*.js',
     '!src/js/admin.js',
   ])
