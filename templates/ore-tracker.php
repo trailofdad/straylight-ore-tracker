@@ -1,6 +1,24 @@
-<?php 
-  get_header(); 
+<?php
+  get_header();
   wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), STRAYLIGHT_ORE_TRACKER_VERSION );
+  $ore_types = [
+    'Veldspar', 'Concentrated Veldspar', 'Dense Veldspar',
+    'Scordite', 'Condensed Scordite', 'Massive Scordite',
+    'Pyroxeres', 'Solid Pyroxeres', 'Viscous Pyroxeres',
+    'Plagioclase', 'Azure Plagioclase', 'Rich Plagioclase',
+    'Omber', 'Silvery Omber', 'Golden Omber',
+    'Kernite', 'Luminous Kernite', 'Fiery Kernite',
+    'Jaspet', 'Pure Jaspet', 'Pristine Jaspet',
+    'Hemorphite', 'Vivid Hemorphite', 'Radiant Hemorphite',
+    'Hedbergite', 'Vitric Hedbergite', 'Glazed Hedbergite',
+    'Gneiss', 'Iridescent Gneiss', 'Prismatic Gneiss',
+    'Dark Ochre', 'Onyx Ochre', 'Obsidian Ochre',
+    'Spodumain', 'Bright Spodumain', 'Gleaming Spodumain',
+    'Crokite', 'Sharp Crokite', 'Crystalline Crokite',
+    'Arkonor', 'Crimson Arkonor', 'Prime Arkonor',
+    'Bistot', 'Triclinic Bistot', 'Monoclinic Bistot',
+    'Mercoxit', 'Magma Mercoxit', 'Vitreous Mercoxit'
+    ];
 ?>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,14 +49,32 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="ore-log-container">
 
       <div class="starter-template">
         <h1>Ore Log</h1>
         <p class="lead">This is the Straylight Systems Ore Logger.<br> This is where the logger will go.</p>
       </div>
 
-    </div><!-- /.container -->
+      <div>
+        <button id="add-ore-type">Add Ore Type</button>
+      </div>
+      <div class="ore-log__wrapper">
+        <div class="ore-log">
+          <select name="ore-types">
+            <?php
+            foreach($ore_types as $ore) {
+              echo '<option>' . $ore . '</option>';
+            }
+            ?>
+          </select>
+          <input type="text">
+        </div>
+      </div>
 
+    </div><!-- /.container -->
+    <div class="container">
+      <button id="submit-ore-log">Submit Ore Log</button>
+    </div>
   </body>
 </html>

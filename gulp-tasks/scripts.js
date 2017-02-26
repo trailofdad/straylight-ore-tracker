@@ -18,7 +18,9 @@ gulp.task('scripts-common', ['clean'], () =>
     presets: ['es2015'],
     ignore: 'src/js/vendor/*.js',
   }))
-  .pipe(uglify())
+  .pipe(uglify({
+    ignore: 'src/js/vendor/*.js',
+  }))
   .pipe(concat('all.min.js'))
   .pipe(sourcemaps.write('maps'))
   .pipe(gulp.dest('dist/js'))

@@ -1,0 +1,30 @@
+.ore-tracker {
+  .ore-log__wrapper {
+    display: inline-flex;
+    align-content: space-between;
+    padding: 2rem;
+    .ore-log {
+      select {
+        margin-right: .5rem;
+        font-size: 1.4rem;
+      }
+      input[type="text"] {
+        display: inline-block;
+        width: 100px;
+        margin-right: 2.5rem;
+        font-size: 1.4rem;
+      }
+      span {
+        font-size: 2rem;
+        vertical-align: sub;
+      }
+    }
+  }
+  button {
+    margin: 2rem;
+  }
+}
+
+
+
+
