@@ -1,4 +1,9 @@
 <?php
+  if ( !(current_user_can( 'administrator' ) || current_user_can( 'member' )) ) {
+    wp_redirect( home_url() );
+    exit;
+  }
+
   get_header();
   wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), STRAYLIGHT_ORE_TRACKER_VERSION );
   $ore_types = [
