@@ -57,14 +57,15 @@
     <div class="container" id="ore-log-container">
 
       <div class="col-xs-12 sot-description">
-        <p>This is some instructions on how to properly log your ore.</p>
+        <p>Please double check your numbers before submitting and only
+        submit <strong>totals</strong> at the end of the mining op.</p>
       </div>
 
       <div class="col-xs-12 sot-content">
         <h3>Log Title</h3>
-        <input id="log-title" type="text" name="log-title">
+        <input id="log-title" type="text" name="log-title" placeholder="Character Name - Op Date (03/02/17)">
         <h3>Log Description</h3>
-        <textarea id="log-description" name="log-description" cols="30" rows="10"></textarea>
+        <textarea id="log-description" name="log-description" cols="30" rows="10" placeholder="Who was boosting?, Who did the ore go to?, Anything else to note"></textarea>
       </div>
 
       <div class="col-xs-12">
