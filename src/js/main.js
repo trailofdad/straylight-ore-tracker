@@ -43,10 +43,13 @@ $(document).ready(() => {
         log_data: oreData,
         id: wp.id,
       },
-      success: (res) => {
+      success: () => {
         console.log('Log Submitted Successfully');
         $('.ore-log__wrapper').remove();
         $('#submit-ore-log').replaceWith('<h2 style="padding-top:5rem;">Thank you commander, your Ore Log has been submitted.</h2>');
+      },
+      error: () => {
+        console.log('Something has gone terribly wrong with submitting the log');
       },
       dataType: 'json',
     });
