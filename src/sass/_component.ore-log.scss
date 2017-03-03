@@ -1,4 +1,5 @@
 .ore-tracker {
+  background-color: grey;
   .ore-log__wrapper {
     display: inline-flex;
     align-content: space-between;
@@ -21,10 +22,19 @@
     }
   }
   button {
-    margin: 2rem;
+    margin: 2rem 0;
   }
 }
 
+.sot-content {
+  margin-bottom: 4rem;
+}
+
+.sot-description {
+  p {
+    font-size: 16px;
+  }
+}
 
 
 

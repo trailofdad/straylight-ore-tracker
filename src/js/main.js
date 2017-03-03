@@ -9,7 +9,7 @@ $(document).ready(() => {
   });
 
   $('#add-ore-type').click(() => {
-    row.clone().appendTo(container);
+    row.clone(true).appendTo(container);
     $('.ore-log__close').click(function close() {
       $(this).parent().parent().remove();
     });

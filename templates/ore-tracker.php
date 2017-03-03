@@ -51,14 +51,22 @@
 
     <div class="container" id="ore-log-container">
 
-      <div class="starter-template">
-        <h1>Ore Log</h1>
-        <p class="lead">This is the Straylight Systems Ore Logger.<br> This is where the logger will go.</p>
+      <div class="col-xs-12 sot-description">
+        <p>This is some instructions on how to properly log your ore.</p>
       </div>
 
-      <div>
+      <div class="col-xs-12 sot-content">
+        <h3>Log Title</h3>
+        <input id="log-title" type="text" name="log-title">
+        <h3>Log Description</h3>
+        <textarea id="log-description" name="log-description" cols="30" rows="10"></textarea>
+      </div>
+
+      <div class="col-xs-12">
+        <h1>Ore Log</h1>
         <button id="add-ore-type">Add Ore Type</button>
       </div>
+
       <div class="ore-log__wrapper">
         <div class="ore-log">
           <select name="ore-types">
@@ -73,9 +81,10 @@
         </div>
       </div>
 
+      <div class="col-xs-12">
+        <button id="submit-ore-log">Submit Ore Log</button>
+      </div>
     </div><!-- /.container -->
-    <div class="container">
-      <button id="submit-ore-log">Submit Ore Log</button>
-    </div>
+
   </body>
 </html>
