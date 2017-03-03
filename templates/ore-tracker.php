@@ -81,10 +81,13 @@
         </div>
       </div>
 
+    </div><!-- /.container -->
+
+    <div class="container">
       <div class="col-xs-12">
         <button id="submit-ore-log">Submit Ore Log</button>
       </div>
-    </div><!-- /.container -->
+    </div>
 
   </body>
 </html>

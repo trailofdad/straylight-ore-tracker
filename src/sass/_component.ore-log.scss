@@ -12,7 +12,7 @@
       input[type="text"] {
         display: inline-block;
         width: 100px;
-        margin-right: 2.5rem;
+        margin-right: .5rem;
         font-size: 1.4rem;
       }
       span {
@@ -28,6 +28,9 @@
 
 .sot-content {
   margin-bottom: 4rem;
+  input[type="text"], textarea {
+    font-size: 1.4rem;
+  }
 }
 
 .sot-description {
