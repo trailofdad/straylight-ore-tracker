@@ -17,6 +17,7 @@ $(document).ready(() => {
   });
 
   $('#submit-ore-log').click(() => {
+    $('#submit-ore-log').prop('disabled', true);
     // grab the totals
     const oreLogs = $('.ore-log');
 
