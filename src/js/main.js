@@ -44,6 +44,8 @@ $(document).ready(() => {
       },
       success: (res) => {
         console.log('Log Submitted Successfully');
+        $('.ore-log__wrapper').remove();
+        $('#submit-ore-log').replaceWith('<h2 style="padding-top:5rem;">Thank you commander, your Ore Log has been submitted.</h2>');
       },
       dataType: 'json',
     });
