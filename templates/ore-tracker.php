@@ -20,6 +20,11 @@
     'Mercoxit', 'Magma Mercoxit', 'Vitreous Mercoxit'
     ];
 ?>
+    <script>
+      var wp = {
+        id: <?= get_current_user_id(); ?>
+      }
+    </script>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
