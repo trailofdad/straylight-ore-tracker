@@ -47,11 +47,36 @@
       global $post;
 
       // Noncename needed to verify where the data originated
-      echo '<input type="hidden" name="logmeta_noncename" id="logmeta_noncename" value="' .
+      echo '<input type="hidden" name="logmeta_nonce" id="logmeta_nonce" value="' .
       wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-      // Get the location data if its already been entered
+      // Get the log data
       $log_data = get_post_meta($post->ID, 'log_data');
       // Echo out the field
       // TODO: add save function
-      echo '<textarea name="" id="" cols="60" rows="10">' . json_encode($log_data) . '</textarea>';
+      echo '<textarea name="log_data" id="log_data" cols="60" rows="10">' . $log_data[0]  . '</textarea>';
     }
+
+    function save_ore_log_meta_box($post_id, $post, $update) {
+      if (!isset($_POST["logmeta_nonce"]) || !wp_verify_nonce($_POST["logmeta_nonce"], plugin_basename(__FILE__)))
+          return $post_id;
+
+      if(!current_user_can("edit_post", $post_id))
+          return $post_id;
+
+      if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
+          return $post_id;
+
+      $slug = "ore_log";
+      if($slug != $post->post_type)
+          return $post_id;
+
+      $meta_box_text_value = "";
+
+      if(isset($_POST["log_data"]))
+      {
+        $meta_box_text_value = $_POST["log_data"];
+      }
+      update_post_meta( $post_id, "log_data", $meta_box_text_value );
+    }
+
+add_action("save_post", "save_ore_log_meta_box", 10, 3);

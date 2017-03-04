@@ -20,7 +20,8 @@ $(document).ready(() => {
     $('#submit-ore-log').prop('disabled', true);
     // grab the totals
     const oreLogs = $('.ore-log');
-
+    const logTitle = $('#log-title').val();
+    const logDescription = $('#log-description').val();
     let oreData = {};
 
     oreLogs.each(function (index) {
@@ -38,8 +39,8 @@ $(document).ready(() => {
       // TODO: make base of this an env variable
       url: 'http://straylight.dev/wp-json/sot/v1/logs/submit',
       data: {
-        log_title: 'Straylight Systems',
-        log_description: 'Here is a description of the first post test',
+        log_title: logTitle,
+        log_description: logDescription,
         log_data: oreData,
         id: wp.id,
       },

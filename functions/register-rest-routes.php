@@ -117,9 +117,9 @@ class SOT_ROUTE extends WP_REST_Controller {
   }
 
   public function submit_ore_log( WP_REST_Request $request ) {
-    $log_title = $request->get_param('log_title');
-    $log_description = $request->get_param('log_description');
-    $log_data = $request->get_param('log_data');
+    $log_title = $request->get_param( 'log_title' );
+    $log_description = $request->get_param( 'log_description' );
+    $log_data = json_encode( $request->get_param( 'log_data' ) );
     $user_id = $request->get_param('id');
 
     // Create post object
