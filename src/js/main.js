@@ -37,7 +37,7 @@ $(document).ready(() => {
     $.ajax({
       type: 'POST',
       // TODO: make base of this an env variable
-      url: 'http://straylight.dev/wp-json/sot/v1/logs/submit',
+      url: 'http://straylight.systems/wp-json/sot/v1/logs/submit',
       data: {
         log_title: logTitle,
         log_description: logDescription,
