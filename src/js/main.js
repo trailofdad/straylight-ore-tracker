@@ -24,12 +24,12 @@ $(document).ready(() => {
     const oreLogs = $('.ore-log');
     const logTitle = $('#log-title').val();
     const logDescription = $('#log-description').val();
-    let oreData = {};
+    const oreData = {};
 
     oreLogs.each(function (index) {
-      let oreType = oreLogs[index].firstElementChild.value;
-      let oreAmmount = $(oreLogs[index]).find('input')[0].value;
-      let oreObject = {};
+      const oreType = oreLogs[index].firstElementChild.value;
+      const oreAmmount = $(oreLogs[index]).find('input')[0].value;
+      const oreObject = {};
 
       oreObject[oreType] = oreAmmount;
 
