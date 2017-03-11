@@ -4,10 +4,11 @@ $(document).ready(() => {
   function validate() {
     // validate ore values
     const oreValues = $('.ore-log__input');
-    oreValues.each(function (index) {
+    oreValues.each((index) => {
       if (!oreValues[index].validity.valid) {
         return false;
       }
+      return true;
     });
     // validate title & description
     const title = $('#log-title')[0];
@@ -26,13 +27,12 @@ $(document).ready(() => {
     const logDescription = $('#log-description').val();
     const oreData = {};
 
-    oreLogs.each(function (index) {
+    oreLogs.each((index) => {
       const oreType = oreLogs[index].firstElementChild.value;
       const oreAmmount = $(oreLogs[index]).find('input')[0].value;
       const oreObject = {};
 
       oreObject[oreType] = oreAmmount;
-
       oreData[index] = oreObject;
     });
 
