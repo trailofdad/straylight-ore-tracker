@@ -74,7 +74,7 @@ $(document).ready(() => {
 
     // Add new Ore Type
     $('#add-ore-type').click(() => {
-      let newLog = row.clone(true);
+      const newLog = row.clone(true);
       newLog.children().children()[1].value = '';
       newLog.appendTo(container);
     });
