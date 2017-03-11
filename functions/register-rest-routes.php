@@ -8,10 +8,6 @@ class SOT_ROUTE extends WP_REST_Controller {
     $namespace = 'sot/v1';
     $base = 'logs';
 
-    // middlewares
-    // array($this, 'validate_nonce'), // validate the nonce
-    // array($this, 'can_edit')
-
     // Get All Ore Submissions
     register_rest_route( $namespace, '/' . $base,
       array(
@@ -34,6 +30,7 @@ class SOT_ROUTE extends WP_REST_Controller {
       array(
         'methods' => WP_REST_Server::CREATABLE,
         'callback' => array( $this, 'submit_ore_log'),
+        'permission_callback' => array( $this, 'validate_origin' ),
         'args' => array(
           'log_title' => array(
             'required' => true,
@@ -54,12 +51,13 @@ class SOT_ROUTE extends WP_REST_Controller {
   // Endpoints
 
   // Auth
-  public function validate_nonce($request) {
-    $nonce = isset($_SERVER['HTTP_X_WP_NONCE']) ? $_SERVER['HTTP_X_WP_NONCE'] : '';
-
-    $nonce = wp_verify_nonce($nonce, 'wp_rest');
-
-    return $nonce || new WP_Error( 'LOGIN', 'Not logged in' );
+  public function validate_origin( WP_REST_Request $request ) {
+    $headers = $request->get_headers();
+    $origin = $headers['origin'][0];
+    if ($origin === site_url()) {
+      return true;
+    }
+    return false;
   }
 
   public function can_edit($request) {
