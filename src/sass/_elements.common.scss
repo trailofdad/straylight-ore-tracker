@@ -1,0 +1,16 @@
+// Validation Styles
+input:required:invalid, input:focus:invalid {
+  -moz-box-shadow: none;
+  border: 1px solid $red;
+}
+input:required:valid {
+  border: 1px solid $green;
+}
+
+textarea:required:invalid, textarea:focus:invalid {
+  -moz-box-shadow: none;
+  border: 1px solid $red;
+}
+textarea:required:valid {
+  border: 1px solid $green;
+}
