@@ -1,5 +1,4 @@
-/* global document */
-/* eslint-disable no-undef */
+/* global document, $ */
 $(document).ready(() => {
   function validate() {
     // validate ore values
@@ -48,6 +47,10 @@ $(document).ready(() => {
           id: wp.id,
         },
         success: () => {
+          const warnings = $('.alert');
+          if (warnings) {
+            warnings.remove();
+          }
           console.log('Log Submitted Successfully');
           $('.ore-log__wrapper').remove();
           $('#submit-ore-log').replaceWith('<h2 style="padding-top:5rem;">Thank you commander, your Ore Log has been submitted.</h2>');
@@ -58,7 +61,14 @@ $(document).ready(() => {
         dataType: 'json',
       });
     } else {
-      alert('Please ensure you have filled out all fields');
+      const warnings = $('.alert');
+      if (warnings) {
+        warnings.remove();
+      }
+      const message = `<div class="alert alert-warning">
+                        <strong>Attention!</strong> Please ensure all fields have been filled out and are valid.
+                      </div>`;
+      $('#submit-container').prepend(message);
       $('#submit-ore-log').prop('disabled', false);
     }
   }

@@ -94,7 +94,7 @@
 
     </div><!-- /.container -->
 
-    <div class="container">
+    <div id="submit-container" class="container">
       <div class="col-xs-12">
         <button id="submit-ore-log">Submit Ore Log</button>
       </div>
