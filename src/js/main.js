@@ -1,4 +1,4 @@
-/* global document, $ */
+/* global document, $, wp */
 $(document).ready(() => {
   function validate() {
     // validate ore values
