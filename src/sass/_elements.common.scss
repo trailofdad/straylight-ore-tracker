@@ -7,7 +7,7 @@ input:required:valid {
   border: 1px solid $green;
 }
 
-textarea:required:invalid, input:focus:invalid {
+textarea:required:invalid, textarea:focus:invalid {
   -moz-box-shadow: none;
   border: 1px solid $red;
 }
