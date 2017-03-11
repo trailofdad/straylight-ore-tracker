@@ -6,7 +6,6 @@ $(document).ready(() => {
     const oreValues = $('.ore-log__input');
     oreValues.each(function (index) {
       if (!oreValues[index].validity.valid) {
-        alert('invalid field');
         return false;
       }
     });
@@ -14,7 +13,6 @@ $(document).ready(() => {
     const title = $('#log-title')[0];
     const description = $('#log-description')[0];
     if (!title.validity.valid || !description.validity.valid) {
-      alert('invalid title or description field');
       return false;
     }
     return true;
@@ -76,10 +74,9 @@ $(document).ready(() => {
 
     // Add new Ore Type
     $('#add-ore-type').click(() => {
-      row.clone(true).appendTo(container);
-      $('.ore-log__close').click(function close() {
-        $(this).parent().parent().remove();
-      });
+      let newLog = row.clone(true);
+      newLog.children().children()[1].value = '';
+      newLog.appendTo(container);
     });
 
     // Submit
