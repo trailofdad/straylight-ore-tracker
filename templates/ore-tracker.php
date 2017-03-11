@@ -5,7 +5,7 @@
   }
 
   get_header();
-  wp_enqueue_style( 'sot-plugin-styles', plugins_url( 'dist/css/bundle.css', __FILE__ ), STRAYLIGHT_ORE_TRACKER_VERSION );
+
   $ore_types = [
     'Veldspar', 'Concentrated Veldspar', 'Dense Veldspar',
     'Scordite', 'Condensed Scordite', 'Massive Scordite',
@@ -53,9 +53,9 @@
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, Straylight Systems!</h1>
-        <p>This is the Straylight Ore Tracker.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <h1>Straylight Ore Tracker</h1>
+        <p>Ore tacking service for Straylight Systems.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Documentation &raquo;</a></p>
       </div>
     </div>
 
@@ -68,9 +68,9 @@
 
       <div class="col-xs-12 sot-content">
         <h3>Log Title</h3>
-        <input id="log-title" type="text" name="log-title" placeholder="Character Name - Op Date (03/02/17)">
+        <input id="log-title" type="text" name="log-title" placeholder="Character Name - Op Date (03/02/17)" required>
         <h3>Log Description</h3>
-        <textarea id="log-description" name="log-description" cols="30" rows="10" placeholder="Who was boosting?, Who did the ore go to?, Anything else to note"></textarea>
+        <textarea id="log-description" name="log-description" cols="30" rows="10" placeholder="Who was boosting?, Who did the ore go to?, Anything else to note" required></textarea>
       </div>
 
       <div class="col-xs-12">
@@ -87,14 +87,14 @@
             }
             ?>
           </select>
-          <input type="text">
+          <input class="ore-log__input" type="number" required>
           <span class="glyphicon glyphicon-remove ore-log__close"></span>
         </div>
       </div>
 
     </div><!-- /.container -->
 
-    <div class="container">
+    <div id="submit-container" class="container">
       <div class="col-xs-12">
         <button id="submit-ore-log">Submit Ore Log</button>
       </div>
